@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | NeuDiet</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-image: url("logo0.jpg"); 
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 400px;
+        margin: 100px auto;
+        background-color: rgba(255, 255, 255, 0.9); 
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    input[type="text"], input[type="password"], input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    #forgotPassword, #createAccount {
+        text-align: center;
+    }
+    #forgotPassword a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    #forgotPassword a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+    <!-- Background Image -->
+    <img src="logo0.jpeg" alt="Background Image" style="position: fixed; top: 0; left: 0; z-index: -1; width: 20%; height: 40%; opacity: 0.5;">
+
+    <div class="container">
+        <h1>Welcome to NeuDiet</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <div id="forgotPassword">
+            <a href="forgot_password.html">Forgot password?</a>
+        </div>
+        <div id="createAccount">
+            <p>Don't have an account? <a href="create_account.html">Create one</a></p>
+        </div>
+    </div>
+
+    <script>
+        function forgotPassword() {
+            window.location.href = "dashboard.html";
+
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            if (username === "admin" && password === "password") {
+                window.location.href = "test2.html";
+            } else {
+                alert("Invalid username or password.");
+
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuDiet</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"></a>
+            <div class="nav-links" id="navLinks">  
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="test2.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        
+        <div class="text-box">
+            <h1>NeuDiet</h1>
+            <p>Dedicated to protect your health</br>Eat right live long</p>
+        </div>
+    </section>
+    <div class="container">
+        <h1>Welcome to Your Dashboard</h1>       
+        <form id="userDataForm" onsubmit="saveUserData(event)">
+            <div class="input-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="input-group">
+                <label for="height">Height (in cm):</label>
+                <input type="number" id="height" name="height" required>
+            </div>
+            <div class="input-group">
+                <label for="weight">Weight (in kg):</label>
+                <input type="number" id="weight" name="weight" required>
+            </div>
+            <div class="input-group">
+                <label for="healthConditions">Health Conditions:</label>
+                <textarea id="healthConditions" name="healthConditions" rows="4" required></textarea>
+            </div>
+            <div class="input-group">
+                <label for="bmi">Body Mass Index (BMI):</label>
+                <input type="text" id="bmi" name="bmi" readonly>
+            </div>
+            <div class="input-group">
+                <label for="bodyType">Body Type:</label>
+                <select id="bodyType" name="bodyType" required>
+                    <option value="ectomorph">Ectomorph</option>
+                    <option value="mesomorph">Mesomorph</option>
+                    <option value="endomorph">Endomorph</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="diseases">Diseases:</label>
+                <select id="diseases" name="diseases" required>
+                    <option value="Diabetes Mellitus">Diabetes Mellitus</option>
+                    <option value="Liver Cirrhosis">Liver Cirrhosis</option>
+                    <option value="Kidney Stones">Kidney Stones</option>
+                    <option value="Coronary Heart Disease">Coronary Heart Disease</option>
+                    <option value="Peptic Ulcer">Peptic Ulcer</option>
+                    <option value="Liver Hepatitis">Liver Hepatitis</option>
+                    <option value="Pneumonia">Pneumonia</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="smoking">Smoking (packs/day):</label>
+                <input type="number" id="smoking" name="smoking" required>
+            </div>
+            <div class="input-group">
+                <label for="drinking">Drinking (glasses/day):</label>
+                <input type="number" id="drinking" name="drinking" required>
+            </div>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+    <script>
+        function saveUserData(event) {
+            event.preventDefault(); // Prevent form submission
+
+
+            let height = document.getElementById("height").value;
+            let weight = document.getElementById("weight").value;
+            let bmi = (weight / ((height / 100) * (height / 100))).toFixed(2);
+            document.getElementById("bmi").value = bmi;
+            alert("The bmi value"+bmi);
+
+            let selectedDisease = document.getElementById("diseases").value;
+            let redirectUrl = ""; 
+            switch (selectedDisease) {
+                case "Diabetes Mellitus":
+                    redirectUrl = "diet_diabetes.html";
+                    break;
+                case "Liver Cirrhosis":
+                    redirectUrl = "diet_liver_cirrhosis.html";
+                    break;
+                case "Kidney Stones":
+                    redirectUrl = "diet_kidney_stones.html";
+                    break;
+                case "Coronary Heart Disease":
+                    redirectUrl = "diet_coronary_heart_disease.html";
+                    break;
+                case "Peptic Ulcer":
+                    redirectUrl = "diet_peptic_ulcer.html";
+                    break;
+                case "Liver Hepatitis":
+                    redirectUrl = "diet_liver_hepatitis.html";
+                    break;
+                case "Pneumonia":
+                    redirectUrl = "diet_pneumonia.html";
+                    break;
+                default:
+                    redirectUrl = "default_diet.html";
+                    break;
+            }
+
+            window.location.href = redirectUrl;
+        }
+    </script>
+
+</body>
+</html>
